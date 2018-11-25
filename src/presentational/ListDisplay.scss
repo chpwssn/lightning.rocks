@@ -1,0 +1,25 @@
+.listings {
+  display: grid;
+  grid-gap: 10px;
+  @media only screen and (max-width: 768px) {
+    grid-auto-rows: minmax(10px, auto);
+    grid-template-columns: 100%;
+  }
+  @media only screen and (min-width: 768px) {
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.first-listing {
+  grid-column: 1;
+}
+.second-listing {
+  grid-column: 2;
+}
+.third-listing {
+  grid-column: 3;
+}
+.fourth-listing {
+  grid-column: 4;
+}
