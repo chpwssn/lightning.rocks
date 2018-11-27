@@ -12,7 +12,7 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Switch>
-            <Route exact path="/" component={ListDisplay} />
+            <Route exact path="/" component={ListDisplay} search={"foo"} />
             <Route exact path="/about" component={About} />
             <Route exact path="/type/:type" component={ListDisplay} />
             <Route exact path="/tag/:tag" component={ListDisplay} />

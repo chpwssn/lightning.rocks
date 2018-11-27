@@ -13,10 +13,11 @@ interface IListDisplayProps {
 
 interface IListDisplayState {
   elements: IGenericListing[];
+  searchTerm: string;
 }
 
 class ListDisplay extends Component<IListDisplayProps, IListDisplayState> {
-  filter: (match: match) => ((e: IGenericListing) => boolean) = (
+  tagFilter: (match: match) => ((e: IGenericListing) => boolean) = (
     match: match
   ) => {
     if ("type" in match.params) {
@@ -43,6 +44,27 @@ class ListDisplay extends Component<IListDisplayProps, IListDisplayState> {
     return (element: IGenericListing) => true;
   };
 
+  stringContains: (needle: string, haystack: string) => boolean = (
+    needle: string,
+    haystack: string
+  ) => {
+    return haystack.indexOf(needle) !== -1;
+  };
+
+  searchFilter: () => ((e: IGenericListing) => boolean) = () => {
+    if (this.state && this.state.searchTerm) {
+      const { searchTerm } = this.state;
+      return (element: IGenericListing) => {
+        return (
+          this.stringContains(searchTerm, element.description) ||
+          this.stringContains(searchTerm, element.title) ||
+          this.stringContains(searchTerm, element.url)
+        );
+      };
+    }
+    return (element: IGenericListing) => true;
+  };
+
   listingNumberToClass: (i: number) => string = (i: number) => {
     const classes = [
       "first-listing",
@@ -56,12 +78,19 @@ class ListDisplay extends Component<IListDisplayProps, IListDisplayState> {
   render() {
     const { match } = this.props;
     const elements = data
-      .filter(this.filter(match))
+      .filter(this.tagFilter(match))
+      .filter(this.searchFilter())
       .sort((a: IGenericListing, b: IGenericListing) =>
         a.title.localeCompare(b.title)
       );
     return (
       <section className="section">
+        <input
+          type="text"
+          className="input search-input"
+          placeholder="Search"
+          onChange={e => this.setState({ searchTerm: e.target.value })}
+        />
         <div className="listings">
           {elements.map((e: IGenericListing, i: number) => {
             return (

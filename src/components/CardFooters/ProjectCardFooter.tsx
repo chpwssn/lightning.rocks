@@ -14,6 +14,11 @@ class ProjectCardFooter extends Component<IProjectCardFooterProps, {}> {
         <a href={listing.url} className="card-footer-item">
           Webpage
         </a>
+        {listing.social && listing.social.github && (
+          <a href={listing.social.github} className="card-footer-item">
+            GitHub
+          </a>
+        )}
       </footer>
     );
   }

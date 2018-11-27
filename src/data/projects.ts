@@ -196,6 +196,25 @@ export const Projects: IProject[] = [
     type: Type.Project,
     url: "https://starblocks.acinq.co",
     tags: ["demo", "lapp"]
+  },
+  {
+    title: "bitcoinfaucet.uo1.net",
+    openSource: false,
+    projectType: ProjectType.Tool,
+    description: "A reliable way to get worthless testnet Bitcoin",
+    type: Type.Project,
+    url: "http://bitcoinfaucet.uo1.net",
+    tags: ["bitcoin faucet"]
+  },
+  {
+    title: "coinfaucet.eu",
+    openSource: false,
+    projectType: ProjectType.Tool,
+    description:
+      "Another reliable way to get worthless testnet Bitcoin but larger amounts at a time.",
+    type: Type.Project,
+    url: "https://coinfaucet.eu/en/btc-testnet/",
+    tags: ["bitcoin faucet"]
   }
 ];
 

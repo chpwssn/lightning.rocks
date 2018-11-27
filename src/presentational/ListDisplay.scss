@@ -1,25 +1,20 @@
 .listings {
   display: grid;
   grid-gap: 10px;
-  @media only screen and (max-width: 768px) {
-    grid-auto-rows: minmax(10px, auto);
-    grid-template-columns: 100%;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
-  @media only screen and (min-width: 768px) {
-    grid-auto-rows: minmax(100px, auto);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1020) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1330px) {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.first-listing {
-  grid-column: 1;
-}
-.second-listing {
-  grid-column: 2;
-}
-.third-listing {
-  grid-column: 3;
-}
-.fourth-listing {
-  grid-column: 4;
+.search-input {
+  margin: 0 0 10px 0;
 }
